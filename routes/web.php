@@ -12,5 +12,12 @@
 */
 
 Route::get('/', function () {
+
     return view('welcome');
 });
+
+Route::resource('images', 'ImageController');
+
+
+
+Route::get('/results', 'ImageController@fusion');

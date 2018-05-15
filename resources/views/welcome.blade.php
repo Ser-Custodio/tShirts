@@ -4,7 +4,11 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <script
+            src="https://code.jquery.com/jquery-2.2.4.js"
+            integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+            crossorigin="anonymous"></script>
         <title>Laravel</title>
 
         <!-- Fonts -->
@@ -21,9 +25,9 @@
                 margin: 0;
             }
 
-            .full-height {
-                height: 100vh;
-            }
+            /*.full-height {*/
+                /*height: 100vh;*/
+            /*}*/
 
             .flex-center {
                 align-items: center;
@@ -62,28 +66,22 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+
+            .selectedImg{
+                background: rgba(107, 129, 162,0.2);
+                border-radius: 10px;
+            }
         </style>
     </head>
     <body>
         <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
-                    @endauth
-                </div>
-            @endif
-
             <div class="content">
                 <div class="title m-b-md">
                     Laravel
                 </div>
-
+                </div>
                 <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
+                    <a href="/images">Documentation</a>
                     <a href="https://laracasts.com">Laracasts</a>
                     <a href="https://laravel-news.com">News</a>
                     <a href="https://forge.laravel.com">Forge</a>
@@ -92,4 +90,14 @@
             </div>
         </div>
     </body>
+<script>
+    $('.img').click(function () {
+        $('.img').removeClass("selectedImg");
+        $(this).addClass("selectedImg");
+    })
+    $('.logo').click(function () {
+        $('.logo').removeClass("selectedImg");
+        $(this).addClass("selectedImg");
+    })
+</script>
 </html>
