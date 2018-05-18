@@ -25,10 +25,6 @@
             margin: 0;
         }
 
-        /*.full-height {*/
-        /*height: 100vh;*/
-        /*}*/
-
         .flex-center {
             align-items: center;
             display: flex;
@@ -80,25 +76,24 @@
             Galery
         </div>
         <div class="container">
-            <form action="/results">
+            <form action="{{ route('resultFusion') }}" method="post" enctype="multipart/form-data">
+                {{ csrf_field() }}
                 <h1>Galery Shirts</h1>
-                @foreach($tshirts as $tshirt)
-                    <label><input value="{{ $tshirt->id }}" type="radio" name="shirt" style="visibility: hidden"><img class="img" src="{{ asset("imgs/shirts/".$tshirt->id.".png")}}" style="width: 200px"></label>
+                @foreach($shirts as $shirt)
+                    <label><input value="{{ $shirt->id }}" type="radio" name="shirt" style="visibility: hidden"><img class="img" src="{{ asset("imgs/shirts/".$shirt->id.".png")}}" style="width: 200px"></label>
                 @endforeach
                 <h1>Galery Logos</h1>
                 @foreach($logos as $logo)
                     <label><input value="{{ $logo->id }}" type="radio" name="logo" style="visibility: hidden"><img class="logo" src="{{ asset("imgs/logos/".$logo->id.".png")}}" style="width: 200px"></label>
                 @endforeach
+                <br><br><br><br><br><br>
+                <a href="{{route("addImage")}}"><input type="button" class="btn btn-success" value="Upload your Image"></a>
                 <br><input class="btn btn-lg btn-primary" type="submit">
             </form>
             <br><br><br><br><br><br>
         </div>
         <div class="links">
             <a href="/images">Documentation</a>
-            <a href="https://laracasts.com">Laracasts</a>
-            <a href="https://laravel-news.com">News</a>
-            <a href="https://forge.laravel.com">Forge</a>
-            <a href="https://github.com/laravel/laravel">GitHub</a>
         </div>
     </div>
 </div>
