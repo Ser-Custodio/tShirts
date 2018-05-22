@@ -41,3 +41,9 @@ Route::get('/fusion/{shirt}/{logo}/{origineX}/{origineY}/{largeur}', 'ImageContr
 
 //route pour enregistrer l'image avec le logo modifié
 Route::post('/enregistrer/{shirt}/{logo}/{origineX}/{origineY}/{largeur}', 'ImageController@saveformaterLogo')->name("enregistrerImageModif");
+
+//-------------------------------------------------------------------------------------------------//
+
+Route::get('afficher/{creation}', 'CreationController@afficherImage')->name("afficherCreation");
+Route::resource('creations', 'CreationController');
+Route::get('generatePDF', 'CreationController@generatePdf')->name("generatePDF");

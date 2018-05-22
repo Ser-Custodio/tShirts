@@ -73,7 +73,10 @@
 <div class="flex-center position-ref full-height">
     <div class="content">
         <div class="title m-b-md">
-            Galery
+            <b>Galery</b>
+        </div>
+        <div>
+            <a href="{{ route('creations.index') }}"><b>HISTORIQUE DES CREATIONS</b></a>
         </div>
         <div class="container">
             <form action="{{ route('resultFusion') }}" method="post" enctype="multipart/form-data">
@@ -93,7 +96,7 @@
             <br><br><br><br><br><br>
         </div>
         <div class="links">
-            <a href="/images">Documentation</a>
+            <a href="/images">Accueil</a>
         </div>
     </div>
 </div>

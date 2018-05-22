@@ -10,6 +10,8 @@ use App\Logo;
 use App\Creation;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
+//use Intervention\Image\Font;
+use PDF;
 
 class ImageController extends Controller
 {
@@ -31,7 +33,7 @@ class ImageController extends Controller
         //path for the images
         $pathShirt = public_path('imgs/shirts/' . $shirt->id . '.png');
         $pathLogo = public_path('imgs/logos/' . $logo->id . '.png');
-        $pathCopyright = public_path('imgs/copy.png');
+        $pathCopyright = public_path('imgs/copy3.png');
         //Instance of ImageManager
         $manager = new ImageManager();
         //Image of shirt
@@ -49,8 +51,15 @@ class ImageController extends Controller
         // insertion of logo
         $shirtFinal = $imageShirt->insert($imageLogo, 'top-left', $x, $y);
 
-        $copy = $manager->make($pathCopyright);//->opacity(20);
-        $shirtFinal->insert($copy,'center');
+        //Ajouter un texte avec une font personnalisée:
+        $imageShirt->text('Copyright',700, 1500, function($font){
+            $font->file('fonts/Bleed.ttf');
+            $font->color(array(255,0,0,0.5));
+            $font->size(200);
+            $font->angle(30);
+        });
+//        $copy = $manager->make($pathCopyright);
+//        $shirtFinal->insert($copy,'center');
         return $imageShirt->response();
     }
 
@@ -123,7 +132,7 @@ class ImageController extends Controller
         ];
         $creation = Creation::create($data);
         //Save image
-        $savePath = storage_path('creations/' . $creation->id . '.png');
+        $savePath = public_path('storage/creations/' . $creation->id . '.png');
         $imageShirt->save($savePath);
 
         $this->deleteFile($logo);
@@ -213,13 +222,19 @@ class ImageController extends Controller
 
         //Coller le logo sur le tshirt
         $imageTshirtLogo = $imageTshirt->insert($imageLogo, 'top-left', $origineX, $origineY);
-
+        //Ajouter un texte avec une font personnalisée:
+        $imageShirt->text('Copyright',700, 1500, function($font){
+            $font->file('fonts/Bleed.ttf');
+            $font->color(array(255,0,0,0.5));
+            $font->size(200);
+            $font->angle(30);
+        });
         //Ajouter un copyright sur l'image
-        $cheminCopy = public_path("imgs/copy.png");
+//        $cheminCopy = public_path("imgs/copy.png");
 //        $imageCopyRight = $manager->make($cheminCopy)->opacity(10);
-        $imageCopyRight = $manager->make($cheminCopy);
+//        $imageCopyRight = $manager->make($cheminCopy);
 
-        $imageTshirt = $imageTshirtLogo->insert($imageCopyRight, 'center');
+//        $imageTshirt = $imageTshirtLogo->insert($imageCopyRight, 'center');
         return $imageTshirt->response();
     }
 
@@ -249,7 +264,7 @@ class ImageController extends Controller
         ];
         $creation = Creation::create($data);
         //Sauvegarder l'image
-        $cheminSauvegarde = storage_path("creations/" . $creation->id . ".png");
+        $cheminSauvegarde = public_path("storage/creations/" . $creation->id . ".png");
         $imageTshirt->save($cheminSauvegarde);
 
         //Si dans la BDD le logo est nommé "perso" : supprimer en BDD et l'image dans le répertoire

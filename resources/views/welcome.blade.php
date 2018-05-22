@@ -81,7 +81,7 @@
                 </div>
                 </div>
                 <div class="links">
-                    <a href="/images">Documentation</a>
+                    <a href="/images">Accueil</a>
                 </div>
             </div>
         </div>
