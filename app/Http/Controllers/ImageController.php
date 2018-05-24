@@ -223,7 +223,7 @@ class ImageController extends Controller
         //Coller le logo sur le tshirt
         $imageTshirtLogo = $imageTshirt->insert($imageLogo, 'top-left', $origineX, $origineY);
         //Ajouter un texte avec une font personnalisée:
-        $imageShirt->text('Copyright',700, 1500, function($font){
+        $imageTshirt->text('Copyright',700, 1500, function($font){
             $font->file('fonts/Bleed.ttf');
             $font->color(array(255,0,0,0.5));
             $font->size(200);

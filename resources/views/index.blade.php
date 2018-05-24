@@ -76,16 +76,16 @@
             <b>Galery</b>
         </div>
         <div>
-            <a href="{{ route('creations.index') }}"><b>HISTORIQUE DES CREATIONS</b></a>
+            <h3><a href="{{ route('creations.index') }}"><b>HISTORIQUE DES CREATIONS</b></a></h3>
         </div>
         <div class="container">
             <form action="{{ route('resultFusion') }}" method="post" enctype="multipart/form-data">
                 {{ csrf_field() }}
-                <h1>Galery Shirts</h1>
+                <h1><b>Galery Shirts</b></h1>
                 @foreach($shirts as $shirt)
                     <label><input value="{{ $shirt->id }}" type="radio" name="shirt" style="visibility: hidden"><img class="img" src="{{ asset("imgs/shirts/".$shirt->id.".png")}}" style="width: 200px"></label>
                 @endforeach
-                <h1>Galery Logos</h1>
+                <h1><b>Galery Logos</b></h1>
                 @foreach($logos as $logo)
                     <label><input value="{{ $logo->id }}" type="radio" name="logo" style="visibility: hidden"><img class="logo" src="{{ asset("imgs/logos/".$logo->id.".png")}}" style="width: 200px"></label>
                 @endforeach

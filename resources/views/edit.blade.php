@@ -19,8 +19,7 @@
     }
 </style>
 <body class="centerSer">
-<h1>Modify your shirt</h1>
-<br>
+<h1>Modify your shirt</h1><br>
 <div class="row">
     <img src="{{route("fusionLogoModif", [$shirt, $logo, $origineX, $origineY, $largeur])}}" style="width: 800px; border: 3px solid blue; border-radius: 20px">
 </div>
@@ -45,7 +44,9 @@
         </form>
     </div>
     <div class="col-md-4">
-        <button class="btn btn-success">Go Back</button>
+        <a class="col-md-2" href="{{ route('deleteImage',$logo) }}">
+            <button class="btn btn-lg btn-danger">Go Back</button>
+        </a>
     </div>
 </div>
 </body>

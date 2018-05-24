@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Creation;
+use App\Jobs\ProcessPDF;
+use App\Mail\SendPdf;
 use Illuminate\Http\Request;
 use Intervention\Image\ImageManager;
 use PDF;
+use Illuminate\Support\Facades\Mail;
 
 class CreationController extends Controller
 {
@@ -50,12 +53,22 @@ class CreationController extends Controller
             'title' => 'My creations',
             'creations' => Creation::all()
         ];
-
-        $pdf = PDF::loadView('creations.creationsPDF', $data);
-
-        return $pdf->stream('creations.pdf');
+//
+//        $pdf = PDF::loadView('creations.creationsPDF', $data);
+//
+////        return $pdf->download('creations.pdf');
+//        ProcessPDF::dispatch($pdf);
+        ProcessPDF::dispatch();
+        $this->sendMailPdf();
+        return back();
     }
 
+    public function sendMailPdf(){
+        Mail::to('veronique.rouault@campus-numerique-in-the-alps.com')
+            ->bcc('sercustodio@gmail.com')
+            ->bcc('marion.chapuis@campus-numerique-in-the-alps.com')
+            ->send(new SendPdf());
+    }
     /**
      * Show the form for creating a new resource.
      *
