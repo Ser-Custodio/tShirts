@@ -90,6 +90,7 @@
         <div class="links">
             <a href="/images">Accueil</a>
             <a href="{{ route("generatePDF") }}"><button class="btn btn-lg btn-primary">Download PDF</button></a>
+
         </div>
     </div>
 </div>

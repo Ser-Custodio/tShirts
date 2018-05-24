@@ -77,6 +77,7 @@
         </div>
         <div>
             <h3><a href="{{ route('creations.index') }}"><b>HISTORIQUE DES CREATIONS</b></a></h3>
+            <a href="{{ route("sendmail") }}"><button class="btn btn-lg btn-primary">Send Mail</button></a>
         </div>
         <div class="container">
             <form action="{{ route('resultFusion') }}" method="post" enctype="multipart/form-data">

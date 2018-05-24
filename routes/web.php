@@ -51,4 +51,4 @@ Route::get('generatePDF', 'CreationController@generatePdf')->name("generatePDF")
 
 //-------------------------------------------------------------------------------------------------//
 
-Route::get('sendmail', 'CreationController@sendMailPdf');
+Route::get('sendmail', 'CreationController@sendMailPdf')->name('sendmail');

@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Http\Request;
-
+use App\Http\Resources\LogoCollection;
+use App\Logo;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -16,3 +17,12 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('logos', function () {
+    return new LogoCollection(Logo::all());
+});
+Route::get('logos/{logo}', function (Logo $logo) {
+    return new LogoCollection(Logo::find($logo));
+});
+
+

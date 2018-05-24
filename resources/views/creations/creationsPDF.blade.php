@@ -30,7 +30,6 @@
             </td>
             <td>{{ $creation->created_at }}</td>
         </tr>
-
     @endforeach
 </table>
 <htmlpagefooter name="page-footer">

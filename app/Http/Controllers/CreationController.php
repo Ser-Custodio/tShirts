@@ -26,6 +26,11 @@ class CreationController extends Controller
     }
 
     //Fonction permettant de lire une image et la retourner (image dans storage)
+
+    /**
+     * @param Creation $creation
+     * @return mixed
+     */
     public function afficherImage(Creation $creation){
         //Chemin des images
         $cheminCreation = public_path("storage/creations/". $creation->id . ".png");
@@ -48,26 +53,31 @@ class CreationController extends Controller
         return $imageCreation->response();
     }
 
+    // Method to generate PDF using queue
+
+    /**
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function generatePdf(){
         $data = [
             'title' => 'My creations',
             'creations' => Creation::all()
         ];
-//
-//        $pdf = PDF::loadView('creations.creationsPDF', $data);
-//
-////        return $pdf->download('creations.pdf');
-//        ProcessPDF::dispatch($pdf);
         ProcessPDF::dispatch();
-        $this->sendMailPdf();
+//        $this->sendMailPdf();
         return back();
     }
 
+    // Method to send mails using queue
+
+    /**
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function sendMailPdf(){
-        Mail::to('veronique.rouault@campus-numerique-in-the-alps.com')
-            ->bcc('sercustodio@gmail.com')
-            ->bcc('marion.chapuis@campus-numerique-in-the-alps.com')
-            ->send(new SendPdf());
+        Mail::to('sergio.custodio@campus-numerique-in-the-alps.com')
+            ->queue(new SendPdf());
+
+        return back();
     }
     /**
      * Show the form for creating a new resource.

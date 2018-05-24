@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 //use Intervention\Image\Font;
 use PDF;
+use Illuminate\Http\Resources\Json\ResourceCollection;
+use App\Http\Resources\LogoCollection;
 
 class ImageController extends Controller
 {
@@ -26,6 +28,7 @@ class ImageController extends Controller
             'shirts' => Tshirt::all(),
             'logos' => Logo::all()
         ];
+
         return view('index', $data);
     }
 
