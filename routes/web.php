@@ -52,3 +52,7 @@ Route::get('generatePDF', 'CreationController@generatePdf')->name("generatePDF")
 //-------------------------------------------------------------------------------------------------//
 
 Route::get('sendmail', 'CreationController@sendMailPdf')->name('sendmail');
+
+//-------------------------------------------------------------------------------------------------//
+
+Route::get('/logos/create','LogoController@create')->name('formulaireLogo');

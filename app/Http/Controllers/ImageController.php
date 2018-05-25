@@ -61,8 +61,7 @@ class ImageController extends Controller
             $font->size(200);
             $font->angle(30);
         });
-//        $copy = $manager->make($pathCopyright);
-//        $shirtFinal->insert($copy,'center');
+
         return $imageShirt->response();
     }
 

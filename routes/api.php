@@ -21,8 +21,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('logos', function () {
     return new LogoCollection(Logo::all());
 });
-Route::get('logos/{logo}', function (Logo $logo) {
+
+Route::post('creations', 'LogoController@store')->name('ajoutCreation');
+
+Route::get('creations/{logo}', function (Logo $logo) {
     return new LogoCollection(Logo::find($logo));
 });
 
-
+Route::delete('logos/{id}', 'LogoController@destroy')->name('killLogo');

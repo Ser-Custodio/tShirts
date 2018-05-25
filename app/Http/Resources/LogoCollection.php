@@ -2,6 +2,8 @@
 
 namespace App\Http\Resources;
 
+use App\Logo;
+use GuzzleHttp\Psr7\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
 class LogoCollection extends ResourceCollection
@@ -14,8 +16,10 @@ class LogoCollection extends ResourceCollection
      */
     public function toArray($request)
     {
-        return [
+        $data = [
             'Logos' => $this->collection,
-            ];
+        ];
+        return $data;
     }
+
 }
