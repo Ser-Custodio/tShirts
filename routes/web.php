@@ -46,6 +46,8 @@ Route::post('/enregistrer/{shirt}/{logo}/{origineX}/{origineY}/{largeur}', 'Imag
 
 Route::get('afficher/{creation}', 'CreationController@afficherImage')->name("afficherCreation");
 Route::resource('creations', 'CreationController');
+
+
 Route::get('generatePDF', 'CreationController@generatePdf')->name("generatePDF");
 
 

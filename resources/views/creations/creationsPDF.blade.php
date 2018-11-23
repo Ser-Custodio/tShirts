@@ -14,10 +14,12 @@
     <title>Document</title>
 </head>
 <body style="align-items: center; text-align: center;">
-<htmlpageheader name="page-header">
-    <h1 style="text-align: center;">{{ $title }}</h1>
-</htmlpageheader>
-<br><br><br><br>
+
+    <htmlpageheader name="page-header">
+        <h1 style="text-align: center;">{{ $title }}</h1>
+    </htmlpageheader>
+
+    <br><br><br><br>
 <table style="text-align: center; align-items: center;">
     <tr>
         <td>Creation</td>
@@ -32,8 +34,10 @@
         </tr>
     @endforeach
 </table>
-<htmlpagefooter name="page-footer">
-{PAGENO}
-</htmlpagefooter>
+
+    <htmlpagefooter name="page-footer">
+    {PAGENO}
+    </htmlpagefooter>
+
 </body>
 </html>

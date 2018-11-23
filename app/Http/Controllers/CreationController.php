@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Creation;
+
 use App\Jobs\ProcessPDF;
+
 use App\Mail\SendPdf;
 use Illuminate\Http\Request;
 use Intervention\Image\ImageManager;
@@ -58,14 +60,27 @@ class CreationController extends Controller
     /**
      * @return \Illuminate\Http\RedirectResponse
      */
+
+    // Creates the PDF with a queue
+//    public function generatePdf(){
+//        $data = [
+//            'title' => 'My creations',
+//            'creations' => Creation::all()
+//        ];
+//        ProcessPDF::dispatch();
+////        $this->sendMailPdf();
+//        return back();
+//    }
+
+
+    //Generate the PDF normaly
     public function generatePdf(){
         $data = [
             'title' => 'My creations',
             'creations' => Creation::all()
         ];
-        ProcessPDF::dispatch();
-//        $this->sendMailPdf();
-        return back();
+        $pdf = PDF::loadView('creations.creationsPDF', $data);
+        return $pdf->stream('creations.pdf');
     }
 
     // Method to send mails using queue
